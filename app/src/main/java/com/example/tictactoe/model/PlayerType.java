@@ -4,7 +4,18 @@ package com.example.tictactoe.model;
  * Created by tiago on 2016-09-29.
  */
 public enum PlayerType {
-    NONE,
-    X,
-    O
+    NONE("-"),
+    X("X"),
+    O("O");
+
+    private String stringValue;
+
+    PlayerType(String toString) {
+        stringValue = toString;
+    }
+
+    @Override
+    public String toString() {
+        return stringValue;
+    }
 }

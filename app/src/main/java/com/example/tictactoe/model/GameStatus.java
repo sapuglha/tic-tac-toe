@@ -23,15 +23,7 @@ public class GameStatus {
     }
 
     public String getWinner() {
-        switch (winner) {
-            case X:
-                return "X";
-            case O:
-                return "O";
-            case NONE:
-            default:
-                return "";
-        }
+        return winner.toString();
     }
 
     public void setWinner(PlayerType winner) {
