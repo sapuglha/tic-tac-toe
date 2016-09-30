@@ -16,39 +16,21 @@ public class GameStatusHandler {
         this.game = game;
     }
 
-    public GameStatus getGame(){
+    public GameStatus getGame() {
         return game;
     }
-
+    
     public boolean play(int x, int y) {
-        PlayerType currentPlayer = game.getCurrentPlayer();
-
-        // This is probably at the wrong place
-        if (game.status[x][y] != PlayerType.NONE
-                || game.status[x][y] == currentPlayer) {
-            return false;
-        }
-
-        game.status[x][y] = currentPlayer;
-
-        boolean response = checkForWinner(x, y);
-
-        if (currentPlayer == PlayerType.X) {
-            game.setCurrentPlayer(PlayerType.O);
-        } else {
-            game.setCurrentPlayer(PlayerType.X);
-        }
-
-        return response;
+        PlayerType player = game.getCurrentPlayer();
+        return game.setStatus(x, y) && checkForWinner(x, y, player);
     }
 
-    private boolean checkForWinner(int x, int y) {
+    private boolean checkForWinner(int x, int y, PlayerType player) {
         int winnerCount = 0;
-        PlayerType currentPlayer = game.getCurrentPlayer();
 
         // Validate row, iterate columns:
         for (int j = 0; j < MATRIX_SIZE; j++) {
-            if (game.status[x][j] == currentPlayer) {
+            if (game.getStatus(x, j) == player) {
                 winnerCount++;
             } else {
                 break;
@@ -56,14 +38,14 @@ public class GameStatusHandler {
         }
 
         if (winnerCount == MATRIX_SIZE) {
-            game.setWinner(currentPlayer);
+            game.setWinner(player);
             return true;
         }
 
         // Validate column, iterate rows:
         winnerCount = 0;
         for (int i = 0; i < MATRIX_SIZE; i++) {
-            if (game.status[i][y] == currentPlayer) {
+            if (game.getStatus(i, y) == player) {
                 winnerCount++;
             } else {
                 break;
@@ -71,7 +53,7 @@ public class GameStatusHandler {
         }
 
         if (winnerCount == MATRIX_SIZE) {
-            game.setWinner(currentPlayer);
+            game.setWinner(player);
             return true;
         }
 
@@ -79,7 +61,7 @@ public class GameStatusHandler {
         winnerCount = 0;
         if (x == y) {
             for (int i = 0; i < MATRIX_SIZE; i++) {
-                if (game.status[i][i] == currentPlayer) {
+                if (game.getStatus(i, i) == player) {
                     winnerCount++;
                 } else {
                     break;
@@ -88,7 +70,7 @@ public class GameStatusHandler {
         }
 
         if (winnerCount == MATRIX_SIZE) {
-            game.setWinner(currentPlayer);
+            game.setWinner(player);
             return true;
         }
 
@@ -96,7 +78,7 @@ public class GameStatusHandler {
         winnerCount = 0;
         int j = 0;
         for (int i = MATRIX_SIZE - 1; i >= 0; i--) {
-            if (game.status[i][j] == currentPlayer) {
+            if (game.getStatus(i, j) == player) {
                 winnerCount++;
                 j++;
             } else {
@@ -105,7 +87,7 @@ public class GameStatusHandler {
         }
 
         if (winnerCount == MATRIX_SIZE) {
-            game.setWinner(currentPlayer);
+            game.setWinner(player);
             return true;
         } else {
             return false;

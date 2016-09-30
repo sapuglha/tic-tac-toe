@@ -6,7 +6,7 @@ package com.example.tictactoe.model;
 
 public class GameStatus {
     public static final short MATRIX_SIZE = 3;
-    public PlayerType[][] status;
+    private PlayerType[][] status;
     private PlayerType currentPlayer;
     private PlayerType winner;
 
@@ -18,16 +18,36 @@ public class GameStatus {
         return currentPlayer;
     }
 
-    public void setCurrentPlayer(PlayerType next) {
-        currentPlayer = next;
-    }
-
     public String getWinner() {
         return winner.toString();
     }
 
     public void setWinner(PlayerType winner) {
         this.winner = winner;
+    }
+
+    public PlayerType getStatus(int x, int y) {
+        return status[x][y];
+    }
+
+    public boolean setStatus(int x, int y) {
+        // Check that the given location is not already played, or played by the same user
+        if (status[x][y] != PlayerType.NONE
+                || status[x][y] == currentPlayer) {
+            return false;
+        }
+
+        // assign the player to that position
+        status[x][y] = currentPlayer;
+
+        // Set the next player
+        if (currentPlayer == PlayerType.X) {
+            currentPlayer = PlayerType.O;
+        } else {
+            currentPlayer = PlayerType.X;
+        }
+
+        return true;
     }
 
     public void reset() {
