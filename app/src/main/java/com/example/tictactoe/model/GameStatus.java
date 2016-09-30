@@ -23,7 +23,6 @@ public class GameStatus {
     }
 
     public String getWinner() {
-        String response = "";
         switch (winner) {
             case X:
                 return "X";

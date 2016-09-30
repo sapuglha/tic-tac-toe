@@ -11,9 +11,13 @@ import static com.example.tictactoe.model.GameStatus.MATRIX_SIZE;
 
 public class GameStatusHandler {
     private final GameStatus game;
-    
+
     public GameStatusHandler(GameStatus game) {
         this.game = game;
+    }
+
+    public GameStatus getGame(){
+        return game;
     }
 
     public boolean play(int x, int y) {
