@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Tic Tac Toe</string>
     <string name="main_activity_winner_indicator">The winner is:</string>
+    <string name="main_activity_menu_reset_game">Reset</string>
 </resources>

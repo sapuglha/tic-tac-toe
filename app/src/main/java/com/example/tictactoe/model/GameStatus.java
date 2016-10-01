@@ -71,6 +71,8 @@ public class GameStatus extends BaseObservable {
 
         currentPlayer = PlayerType.X;
         winner = PlayerType.NONE;
+
+        notifyPropertyChanged(BR.winner);
     }
 
     public String toString() {

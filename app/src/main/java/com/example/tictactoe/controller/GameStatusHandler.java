@@ -25,6 +25,10 @@ public class GameStatusHandler {
         return game;
     }
 
+    public void reset(){
+        game.reset();
+    }
+
     public boolean play(int x, int y) {
         PlayerType player = game.getCurrentPlayer();
         return game.setStatus(x, y) && checkForWinner(x, y, player);

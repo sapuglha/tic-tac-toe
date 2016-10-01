@@ -3,6 +3,9 @@ package com.example.tictactoe;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.tictactoe.controller.GameStatusHandler;
 import com.example.tictactoe.dagger.DaggerGameComponent;
@@ -28,5 +31,24 @@ public class MainActivity extends AppCompatActivity {
 
         binding.setGameHandler(handler);
         binding.setGameStatus(handler.getGame());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.new_game:
+                handler.reset();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
