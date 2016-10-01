@@ -3,6 +3,10 @@ package com.example.tictactoe.controller;
 import com.example.tictactoe.model.GameStatus;
 import com.example.tictactoe.model.PlayerType;
 
+import javax.inject.Inject;
+
+import dagger.Module;
+
 import static com.example.tictactoe.model.GameStatus.MATRIX_SIZE;
 
 /**
@@ -12,6 +16,7 @@ import static com.example.tictactoe.model.GameStatus.MATRIX_SIZE;
 public class GameStatusHandler {
     private final GameStatus game;
 
+    @Inject
     public GameStatusHandler(GameStatus game) {
         this.game = game;
     }
@@ -19,7 +24,7 @@ public class GameStatusHandler {
     public GameStatus getGame() {
         return game;
     }
-    
+
     public boolean play(int x, int y) {
         PlayerType player = game.getCurrentPlayer();
         return game.setStatus(x, y) && checkForWinner(x, y, player);

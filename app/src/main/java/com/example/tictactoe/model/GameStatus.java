@@ -5,6 +5,9 @@ import android.databinding.Bindable;
 
 import com.example.tictactoe.BR;
 
+import dagger.Module;
+import dagger.Provides;
+
 /**
  * Created by tiago on 2016-09-29.
  */

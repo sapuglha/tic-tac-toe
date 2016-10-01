@@ -5,18 +5,26 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.tictactoe.controller.GameStatusHandler;
+import com.example.tictactoe.dagger.DaggerGameComponent;
+import com.example.tictactoe.dagger.GameComponent;
+import com.example.tictactoe.dagger.GameModule;
 import com.example.tictactoe.databinding.ActivityMainBinding;
-import com.example.tictactoe.model.GameStatus;
 
 public class MainActivity extends AppCompatActivity {
+
+    GameStatusHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        GameStatus gameStatus = new GameStatus();
-        GameStatusHandler handler = new GameStatusHandler(gameStatus);
+        GameComponent component = DaggerGameComponent
+                .builder()
+                .gameModule(new GameModule())
+                .build();
+
+        handler = component.provideGameStatusHandler();
 
         binding.setGameHandler(handler);
         binding.setGameStatus(handler.getGame());
