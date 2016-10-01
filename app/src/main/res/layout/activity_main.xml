@@ -6,15 +6,9 @@
 
     <data>
 
-        <import type="com.example.tictactoe.model.GameStatus" />
-
         <import type="com.example.tictactoe.model.PlayerType" />
 
         <import type="android.view.View" />
-
-        <variable
-            name="gameStatus"
-            type="com.example.tictactoe.model.GameStatus" />
 
         <variable
             name="gameHandler"
@@ -44,7 +38,7 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="0dp"
                 android:paddingStart="5dp"
-                android:text="@{gameStatus.winner}" />
+                android:text="@{gameHandler.winner}" />
         </LinearLayout>
 
 
@@ -61,8 +55,7 @@
                 android:layout_margin="2dp"
                 android:background="@color/colorTile"
                 android:onClick="@{() -> gameHandler.play(0, 0)}"
-                android:src="@{gameStatus.getStatus(0, 0) == PlayerType.X ? @drawable/player_x : @drawable/player_o}"
-                android:visibility="@{gameStatus.getStatus(0, 0) == PlayerType.NONE ? View.VISIBLE : View.VISIBLE}"
+                android:src="@{gameHandler.getPlayer(0, 0)}"
                 grid:layout_column="0"
                 grid:layout_columnWeight="1"
                 grid:layout_row="0"

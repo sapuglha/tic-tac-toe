@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         handler = component.provideGameStatusHandler();
 
         binding.setGameHandler(handler);
-        binding.setGameStatus(handler.getGame());
     }
 
     @Override

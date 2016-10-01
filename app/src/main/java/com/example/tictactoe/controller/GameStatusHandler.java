@@ -1,7 +1,14 @@
 package com.example.tictactoe.controller;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
+
+import com.example.tictactoe.R;
 import com.example.tictactoe.model.GameStatus;
 import com.example.tictactoe.model.PlayerType;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -11,7 +18,7 @@ import static com.example.tictactoe.model.GameStatus.MATRIX_SIZE;
  * Created by tiago on 2016-09-29.
  */
 
-public class GameStatusHandler {
+public class GameStatusHandler extends BaseObservable {
     private final GameStatus game;
 
     @Inject
@@ -19,17 +26,37 @@ public class GameStatusHandler {
         this.game = game;
     }
 
-    public GameStatus getGame() {
-        return game;
+    @BindingAdapter("android:src")
+    public static void setImageUrl(ImageView view, PlayerType player) {
+        if (PlayerType.O.equals(player)) {
+            Picasso.with(view.getContext()).load(R.drawable.player_o).into(view);
+        } else if (PlayerType.X.equals(player)) {
+            Picasso.with(view.getContext()).load(R.drawable.player_x).into(view);
+        }
     }
 
     public void reset() {
         game.reset();
+        notifyPropertyChanged(com.example.tictactoe.BR.winner);
+    }
+
+    @Bindable
+    public String getWinner() {
+        return game.getWinner().toString();
+    }
+
+    public PlayerType getPlayer(int x, int y) {
+        return game.getStatus(x, y);
     }
 
     public boolean play(int x, int y) {
         PlayerType player = game.getCurrentPlayer();
-        return game.setStatus(x, y) && checkForWinner(x, y, player);
+
+        boolean result = (game.setStatus(x, y) && checkForWinner(x, y, player));
+        if (result) {
+            notifyPropertyChanged(com.example.tictactoe.BR.winner);
+        }
+        return result;
     }
 
     private boolean checkForWinner(int x, int y, PlayerType player) {

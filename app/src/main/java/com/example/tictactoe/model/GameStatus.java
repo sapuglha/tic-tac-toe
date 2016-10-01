@@ -1,15 +1,10 @@
 package com.example.tictactoe.model;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-
-import com.example.tictactoe.BR;
-
 /**
  * Created by tiago on 2016-09-29.
  */
 
-public class GameStatus extends BaseObservable {
+public class GameStatus {
     public static final short MATRIX_SIZE = 3;
     private PlayerType[][] status;
     private PlayerType currentPlayer;
@@ -23,14 +18,12 @@ public class GameStatus extends BaseObservable {
         return currentPlayer;
     }
 
-    @Bindable
-    public String getWinner() {
-        return winner.toString();
+    public PlayerType getWinner() {
+        return winner;
     }
 
     public void setWinner(PlayerType winner) {
         this.winner = winner;
-        notifyPropertyChanged(BR.winner);
     }
 
     public PlayerType getStatus(int x, int y) {
@@ -68,8 +61,6 @@ public class GameStatus extends BaseObservable {
 
         currentPlayer = PlayerType.X;
         winner = PlayerType.NONE;
-
-        notifyPropertyChanged(BR.winner);
     }
 
     public String toString() {
