@@ -2,7 +2,6 @@ package com.example.tictactoe;
 
 import com.example.tictactoe.controller.GameStatusHandler;
 import com.example.tictactoe.model.GameStatus;
-import com.example.tictactoe.model.PlayerType;
 
 import org.junit.Test;
 

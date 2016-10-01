@@ -8,7 +8,7 @@ public enum PlayerType {
     X("X"),
     O("O");
 
-    private String stringValue;
+    private final String stringValue;
 
     PlayerType(String toString) {
         stringValue = toString;

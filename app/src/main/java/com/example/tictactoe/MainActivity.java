@@ -15,7 +15,7 @@ import com.example.tictactoe.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    GameStatusHandler handler;
+    private GameStatusHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -5,8 +5,6 @@ import com.example.tictactoe.model.PlayerType;
 
 import javax.inject.Inject;
 
-import dagger.Module;
-
 import static com.example.tictactoe.model.GameStatus.MATRIX_SIZE;
 
 /**
@@ -25,7 +23,7 @@ public class GameStatusHandler {
         return game;
     }
 
-    public void reset(){
+    public void reset() {
         game.reset();
     }
 
