@@ -5,6 +5,7 @@ import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
+import com.example.tictactoe.BR;
 import com.example.tictactoe.R;
 import com.example.tictactoe.model.GameStatus;
 import com.example.tictactoe.model.PlayerType;
@@ -38,6 +39,7 @@ public class GameStatusHandler extends BaseObservable {
     public void reset() {
         game.reset();
         notifyPropertyChanged(com.example.tictactoe.BR.winner);
+        notifyPropertyChanged(BR._all);
     }
 
     @Bindable
@@ -49,6 +51,23 @@ public class GameStatusHandler extends BaseObservable {
         return game.getStatus(x, y);
     }
 
+    public int getPlayerResource(int x, int y) {
+        switch (game.getStatus(x, y)) {
+            case X:
+                return R.drawable.player_x;
+            case O:
+                return R.drawable.player_o;
+            case NONE:
+            default:
+                return 0;
+        }
+    }
+
+    @BindingAdapter("image")
+    public static void imageBinding(ImageView imageView, int resource) {
+        imageView.setImageResource(resource);
+    }
+
     public boolean play(int x, int y) {
         PlayerType player = game.getCurrentPlayer();
 
@@ -56,6 +75,7 @@ public class GameStatusHandler extends BaseObservable {
         if (result) {
             notifyPropertyChanged(com.example.tictactoe.BR.winner);
         }
+        notifyPropertyChanged(BR._all);
         return result;
     }
 

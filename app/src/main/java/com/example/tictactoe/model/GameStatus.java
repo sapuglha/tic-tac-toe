@@ -70,7 +70,7 @@ public class GameStatus {
                 matrix.append(status[i][j]);
                 matrix.append(", ");
             }
-            matrix.append("\n");
+            matrix.append('\n');
         }
         return matrix.toString();
     }
