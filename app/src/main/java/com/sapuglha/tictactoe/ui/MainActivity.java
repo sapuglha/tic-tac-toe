@@ -1,4 +1,4 @@
-package com.example.tictactoe.ui;
+package com.sapuglha.tictactoe.ui;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.tictactoe.R;
-import com.example.tictactoe.controller.GameStatusHandler;
-import com.example.tictactoe.databinding.ActivityMainBinding;
+import com.sapuglha.tictactoe.R;
+import com.sapuglha.tictactoe.controller.GameStatusHandler;
+import com.sapuglha.tictactoe.databinding.ActivityMainBinding;
 
 import javax.inject.Inject;
 

@@ -1,9 +1,9 @@
-package com.example.tictactoe.di;
+package com.sapuglha.tictactoe.di;
 
 import android.app.Application;
 
-import com.example.tictactoe.TttApp;
-import com.example.tictactoe.controller.GameStatusHandler;
+import com.sapuglha.tictactoe.TttApp;
+import com.sapuglha.tictactoe.controller.GameStatusHandler;
 
 import dagger.BindsInstance;
 import dagger.Component;

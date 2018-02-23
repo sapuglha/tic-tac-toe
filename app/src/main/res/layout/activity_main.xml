@@ -3,17 +3,17 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.tictactoe.ui.MainActivity">
+    tools:context="com.sapuglha.tictactoe.ui.MainActivity">
 
     <data>
 
-        <import type="com.example.tictactoe.model.PlayerType" />
+        <import type="com.sapuglha.tictactoe.model.PlayerType" />
 
         <import type="android.view.View" />
 
         <variable
             name="gameHandler"
-            type="com.example.tictactoe.controller.GameStatusHandler" />
+            type="com.sapuglha.tictactoe.controller.GameStatusHandler" />
     </data>
 
     <LinearLayout

@@ -1,4 +1,4 @@
-package com.example.tictactoe.model;
+package com.sapuglha.tictactoe.model;
 
 public class GameStatus {
     public static final short MATRIX_SIZE = 3;

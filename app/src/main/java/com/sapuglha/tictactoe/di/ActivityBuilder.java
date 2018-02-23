@@ -1,6 +1,6 @@
-package com.example.tictactoe.di;
+package com.sapuglha.tictactoe.di;
 
-import com.example.tictactoe.ui.MainActivity;
+import com.sapuglha.tictactoe.ui.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

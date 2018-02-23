@@ -1,9 +1,9 @@
-package com.example.tictactoe
+package com.sapuglha.tictactoe
 
 import android.app.Activity
 import android.app.Application
 import android.os.StrictMode
-import com.example.tictactoe.di.DaggerAppComponent
+import com.sapuglha.tictactoe.di.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject

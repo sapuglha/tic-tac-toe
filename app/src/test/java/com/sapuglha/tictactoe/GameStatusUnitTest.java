@@ -1,7 +1,7 @@
-package com.example.tictactoe;
+package com.sapuglha.tictactoe;
 
-import com.example.tictactoe.controller.GameStatusHandler;
-import com.example.tictactoe.model.GameStatus;
+import com.sapuglha.tictactoe.controller.GameStatusHandler;
+import com.sapuglha.tictactoe.model.GameStatus;
 
 import org.junit.Test;
 

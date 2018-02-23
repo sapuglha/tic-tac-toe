@@ -1,7 +1,7 @@
-package com.example.tictactoe.di;
+package com.sapuglha.tictactoe.di;
 
-import com.example.tictactoe.controller.GameStatusHandler;
-import com.example.tictactoe.model.GameStatus;
+import com.sapuglha.tictactoe.controller.GameStatusHandler;
+import com.sapuglha.tictactoe.model.GameStatus;
 
 import dagger.Module;
 import dagger.Provides;

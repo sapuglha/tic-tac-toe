@@ -1,19 +1,19 @@
-package com.example.tictactoe.controller;
+package com.sapuglha.tictactoe.controller;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
-import com.example.tictactoe.BR;
-import com.example.tictactoe.R;
-import com.example.tictactoe.model.GameStatus;
-import com.example.tictactoe.model.PlayerType;
+import com.sapuglha.tictactoe.BR;
+import com.sapuglha.tictactoe.R;
+import com.sapuglha.tictactoe.model.GameStatus;
+import com.sapuglha.tictactoe.model.PlayerType;
 import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import static com.example.tictactoe.model.GameStatus.MATRIX_SIZE;
+import static com.sapuglha.tictactoe.model.GameStatus.MATRIX_SIZE;
 
 public class GameStatusHandler extends BaseObservable {
     private final GameStatus game;
@@ -39,7 +39,7 @@ public class GameStatusHandler extends BaseObservable {
 
     public void reset() {
         game.reset();
-        notifyPropertyChanged(com.example.tictactoe.BR.winner);
+        notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner);
         notifyPropertyChanged(BR._all);
     }
 
@@ -69,7 +69,7 @@ public class GameStatusHandler extends BaseObservable {
 
         boolean result = (game.setStatus(x, y) && checkForWinner(x, y, player));
         if (result) {
-            notifyPropertyChanged(com.example.tictactoe.BR.winner);
+            notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner);
         }
         notifyPropertyChanged(BR._all);
         return result;
