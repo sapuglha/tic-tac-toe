@@ -1,4 +1,4 @@
-package com.example.tictactoe.dagger;
+package com.example.tictactoe.di;
 
 import com.example.tictactoe.controller.GameStatusHandler;
 import com.example.tictactoe.model.GameStatus;
@@ -6,12 +6,8 @@ import com.example.tictactoe.model.GameStatus;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by tiago on 2016-09-30.
- */
-
 @Module
-public class GameModule {
+public class AppModule {
     @Provides
     GameStatus provideGameStatus() {
         return new GameStatus();

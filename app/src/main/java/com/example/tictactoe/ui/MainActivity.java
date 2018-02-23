@@ -1,4 +1,4 @@
-package com.example.tictactoe;
+package com.example.tictactoe.ui;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -7,27 +7,24 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.tictactoe.R;
 import com.example.tictactoe.controller.GameStatusHandler;
-import com.example.tictactoe.dagger.DaggerGameComponent;
-import com.example.tictactoe.dagger.GameComponent;
-import com.example.tictactoe.dagger.GameModule;
 import com.example.tictactoe.databinding.ActivityMainBinding;
+
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GameStatusHandler handler;
+    @Inject
+    GameStatusHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
-        GameComponent component = DaggerGameComponent
-                .builder()
-                .gameModule(new GameModule())
-                .build();
-
-        handler = component.provideGameStatusHandler();
 
         binding.setGameHandler(handler);
     }

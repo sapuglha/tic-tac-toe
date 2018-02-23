@@ -29,7 +29,8 @@ android {
 
 ext {
     android_support_version = "27.0.2"
-    anko_version = '0.+'
+    anko_version = "0.+"
+    dagger_version = "2.14.1"
 }
 
 dependencies {
@@ -57,8 +58,10 @@ dependencies {
     })
 
     // Gradle
-    implementation 'com.google.dagger:dagger:2.7'
-    kapt 'com.google.dagger:dagger-compiler:2.7'
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 }
 repositories {
     mavenCentral()

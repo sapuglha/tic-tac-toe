@@ -15,10 +15,6 @@ import javax.inject.Inject;
 
 import static com.example.tictactoe.model.GameStatus.MATRIX_SIZE;
 
-/**
- * Created by tiago on 2016-09-29.
- */
-
 public class GameStatusHandler extends BaseObservable {
     private final GameStatus game;
 
