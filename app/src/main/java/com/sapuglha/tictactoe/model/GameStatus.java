@@ -1,5 +1,7 @@
 package com.sapuglha.tictactoe.model;
 
+import android.support.annotation.VisibleForTesting;
+
 public class GameStatus {
     public static final short MATRIX_SIZE = 3;
     private PlayerType[][] status;
@@ -19,7 +21,7 @@ public class GameStatus {
 
     public boolean setStatus(int x, int y) {
         // Check that the given location is not already played, or played by the same user
-        if (status[x][y] != PlayerType.NONE
+        if (status[x][y] != null
                 || status[x][y] == currentPlayer) {
             return false;
         }
@@ -40,21 +42,20 @@ public class GameStatus {
     public void reset() {
         status = new PlayerType[MATRIX_SIZE][MATRIX_SIZE];
 
-        for (int i = 0; i < MATRIX_SIZE; i++) {
-            for (int j = 0; j < MATRIX_SIZE; j++) {
-                status[i][j] = PlayerType.NONE;
-            }
-        }
-
         currentPlayer = PlayerType.X;
     }
 
-    public String toString() {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    public String getMatrix() {
         StringBuilder matrix = new StringBuilder();
         for (int i = 0; i < MATRIX_SIZE; i++) {
             for (int j = 0; j < MATRIX_SIZE; j++) {
-                matrix.append(status[i][j]);
-                matrix.append(", ");
+                if (null != status[i][j]) {
+                    matrix.append(status[i][j].toString());
+                } else {
+                    matrix.append("-");
+                }
+                matrix.append(" ");
             }
             matrix.append('\n');
         }

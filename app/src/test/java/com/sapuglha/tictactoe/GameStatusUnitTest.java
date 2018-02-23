@@ -35,7 +35,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(0, 2)); // X
 
-        System.out.println(gameStatus.toString());
+        System.out.println(gameStatus.getMatrix());
     }
 
     /**
@@ -61,7 +61,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(2, 0)); // X
 
-        System.out.println(gameStatus.toString());
+        System.out.println(gameStatus.getMatrix());
     }
 
     /**
@@ -87,7 +87,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(2, 1)); // X
 
-        System.out.println(gameStatus.toString());
+        System.out.println(gameStatus.getMatrix());
     }
 
     /**
@@ -113,7 +113,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(2, 2)); // X
 
-        System.out.println(gameStatus.toString());
+        System.out.println(gameStatus.getMatrix());
     }
 
     /**
@@ -139,7 +139,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(2, 0)); // X
 
-        System.out.println(gameStatus.toString());
+        System.out.println(gameStatus.getMatrix());
     }
 
 
@@ -170,7 +170,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(0, 1)); // X
 
-        System.out.println(gameStatus.toString());
+        System.out.println(gameStatus.getMatrix());
     }
 
     /**
@@ -190,6 +190,6 @@ public class GameStatusUnitTest {
 
         assertFalse(game.play(0, 2)); // O
 
-        System.out.println(gameStatus.toString());
+        System.out.println(gameStatus.getMatrix());
     }
 }

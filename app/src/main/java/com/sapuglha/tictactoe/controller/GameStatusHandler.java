@@ -22,7 +22,7 @@ public class GameStatusHandler extends BaseObservable {
     @Inject
     public GameStatusHandler(GameStatus game) {
         this.game = game;
-        this.winner = PlayerType.NONE;
+        this.winner = null;
     }
 
     @BindingAdapter("image")
@@ -32,23 +32,25 @@ public class GameStatusHandler extends BaseObservable {
 
     public void reset() {
         game.reset();
-        winner = PlayerType.NONE;
+        winner = null;
         notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner);
         notifyPropertyChanged(BR._all);
     }
 
     @Bindable
     public String getWinner() {
-        return winner.getName();
+        if (null != winner) return winner.toString();
+        return "";
     }
 
     public int getPlayerResource(int x, int y) {
-        switch (game.getStatus(x, y)) {
+        PlayerType position = game.getStatus(x, y);
+        if (null == position) return 0;
+        switch (position) {
             case X:
                 return R.drawable.player_x;
             case O:
                 return R.drawable.player_o;
-            case NONE:
             default:
                 return 0;
         }
