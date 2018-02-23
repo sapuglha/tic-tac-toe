@@ -1,11 +1,13 @@
 package com.sapuglha.tictactoe.model
 
-enum class PlayerType constructor(private val stringValue: String) {
+enum class PlayerType constructor(
+        private val playerName: String
+) {
     NONE("-"),
     X("X"),
     O("O");
 
-    override fun toString(): String {
-        return stringValue
+    fun getName(): String {
+        return playerName
     }
 }

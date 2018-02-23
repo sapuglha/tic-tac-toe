@@ -9,7 +9,6 @@ import com.sapuglha.tictactoe.BR;
 import com.sapuglha.tictactoe.R;
 import com.sapuglha.tictactoe.model.GameStatus;
 import com.sapuglha.tictactoe.model.PlayerType;
-import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -18,18 +17,12 @@ import static com.sapuglha.tictactoe.model.GameStatus.MATRIX_SIZE;
 public class GameStatusHandler extends BaseObservable {
     private final GameStatus game;
 
+    private PlayerType winner;
+
     @Inject
     public GameStatusHandler(GameStatus game) {
         this.game = game;
-    }
-
-    @BindingAdapter("android:src")
-    public static void setImageUrl(ImageView view, PlayerType player) {
-        if (PlayerType.O.equals(player)) {
-            Picasso.with(view.getContext()).load(R.drawable.player_o).into(view);
-        } else if (PlayerType.X.equals(player)) {
-            Picasso.with(view.getContext()).load(R.drawable.player_x).into(view);
-        }
+        this.winner = PlayerType.NONE;
     }
 
     @BindingAdapter("image")
@@ -39,17 +32,14 @@ public class GameStatusHandler extends BaseObservable {
 
     public void reset() {
         game.reset();
+        winner = PlayerType.NONE;
         notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner);
         notifyPropertyChanged(BR._all);
     }
 
     @Bindable
     public String getWinner() {
-        return game.getWinner().toString();
-    }
-
-    public PlayerType getPlayer(int x, int y) {
-        return game.getStatus(x, y);
+        return winner.getName();
     }
 
     public int getPlayerResource(int x, int y) {
@@ -88,7 +78,7 @@ public class GameStatusHandler extends BaseObservable {
         }
 
         if (winnerCount == MATRIX_SIZE) {
-            game.setWinner(player);
+            winner = player;
             return true;
         }
 
@@ -103,7 +93,7 @@ public class GameStatusHandler extends BaseObservable {
         }
 
         if (winnerCount == MATRIX_SIZE) {
-            game.setWinner(player);
+            winner = player;
             return true;
         }
 
@@ -120,7 +110,7 @@ public class GameStatusHandler extends BaseObservable {
         }
 
         if (winnerCount == MATRIX_SIZE) {
-            game.setWinner(player);
+            winner = player;
             return true;
         }
 
@@ -137,7 +127,7 @@ public class GameStatusHandler extends BaseObservable {
         }
 
         if (winnerCount == MATRIX_SIZE) {
-            game.setWinner(player);
+            winner = player;
             return true;
         } else {
             return false;

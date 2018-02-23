@@ -4,7 +4,6 @@ public class GameStatus {
     public static final short MATRIX_SIZE = 3;
     private PlayerType[][] status;
     private PlayerType currentPlayer;
-    private PlayerType winner;
 
     public GameStatus() {
         reset();
@@ -12,14 +11,6 @@ public class GameStatus {
 
     public PlayerType getCurrentPlayer() {
         return currentPlayer;
-    }
-
-    public PlayerType getWinner() {
-        return winner;
-    }
-
-    public void setWinner(PlayerType winner) {
-        this.winner = winner;
     }
 
     public PlayerType getStatus(int x, int y) {
@@ -56,7 +47,6 @@ public class GameStatus {
         }
 
         currentPlayer = PlayerType.X;
-        winner = PlayerType.NONE;
     }
 
     public String toString() {
