@@ -14,7 +14,7 @@ class AppModule {
     }
 
     @Provides
-    internal fun provideGameStatusHandler(): GameStatusHandler {
-        return GameStatusHandler(GameStatus())
+    internal fun provideGameStatusHandler(gameStatus: GameStatus): GameStatusHandler {
+        return GameStatusHandler(gameStatus)
     }
 }
