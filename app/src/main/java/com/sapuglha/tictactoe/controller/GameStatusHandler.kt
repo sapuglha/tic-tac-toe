@@ -16,8 +16,19 @@ class GameStatusHandler @Inject constructor(
 ) : BaseObservable() {
 
     private var winner: PlayerType? = null
-
     private var currentPlayer: PlayerType = PlayerType.X
+
+    fun play(x: Int, y: Int): Boolean {
+        if (winner != null) return false
+
+        val result = game.setPosition(x, y, currentPlayer) && checkForWinner(x, y, currentPlayer)
+        setNextPlayer()
+        if (result) {
+            notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner)
+        }
+        notifyPropertyChanged(BR._all)
+        return result
+    }
 
     fun reset() {
         game.reset()
@@ -47,16 +58,6 @@ class GameStatusHandler @Inject constructor(
         } else {
             PlayerType.X
         }
-    }
-
-    fun play(x: Int, y: Int): Boolean {
-        val result = game.setPosition(x, y, currentPlayer!!) && checkForWinner(x, y, currentPlayer)
-        setNextPlayer()
-        if (result) {
-            notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner)
-        }
-        notifyPropertyChanged(BR._all)
-        return result
     }
 
     private fun checkForWinner(x: Int, y: Int, player: PlayerType): Boolean {
@@ -120,11 +121,11 @@ class GameStatusHandler @Inject constructor(
             }
         }
 
-        if (winnerCount == MATRIX_SIZE) {
+        return if (winnerCount == MATRIX_SIZE) {
             winner = player
-            return true
+            true
         } else {
-            return false
+            false
         }
     }
 
