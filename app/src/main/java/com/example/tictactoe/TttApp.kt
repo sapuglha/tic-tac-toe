@@ -33,7 +33,7 @@ class TttApp : Application(), HasActivityInjector {
             // strict mode for dev debug versions
             StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
                     .detectCustomSlowCalls()
-                    .detectDiskReads()
+//                    .detectDiskReads() // incompatible with dataBinding
                     .detectDiskWrites()
                     .detectNetwork()
                     .penaltyLog()

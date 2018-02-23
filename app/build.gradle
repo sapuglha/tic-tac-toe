@@ -29,6 +29,7 @@ android {
 
 ext {
     android_support_version = "27.0.2"
+    architecture_components_lifecycle_version = '1.1.0'
     anko_version = "0.+"
     dagger_version = "2.14.1"
 }
@@ -48,6 +49,11 @@ dependencies {
     // Android support libs
     implementation "com.android.support:appcompat-v7:$android_support_version"
     implementation "com.android.support:gridlayout-v7:$android_support_version"
+
+    // Architecture components - somehow databinding required this version
+    implementation "android.arch.lifecycle:runtime:$architecture_components_lifecycle_version"
+    implementation "android.arch.lifecycle:extensions:$architecture_components_lifecycle_version"
+    kapt "android.arch.lifecycle:compiler:$architecture_components_lifecycle_version"
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
