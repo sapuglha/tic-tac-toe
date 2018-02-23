@@ -13,7 +13,7 @@ import dagger.Provides;
 @Module
 public class GameModule {
     @Provides
-    GameStatus provideGameStatus(){
+    GameStatus provideGameStatus() {
         return new GameStatus();
     }
 

@@ -36,6 +36,11 @@ public class GameStatusHandler extends BaseObservable {
         }
     }
 
+    @BindingAdapter("image")
+    public static void imageBinding(ImageView imageView, int resource) {
+        imageView.setImageResource(resource);
+    }
+
     public void reset() {
         game.reset();
         notifyPropertyChanged(com.example.tictactoe.BR.winner);
@@ -61,11 +66,6 @@ public class GameStatusHandler extends BaseObservable {
             default:
                 return 0;
         }
-    }
-
-    @BindingAdapter("image")
-    public static void imageBinding(ImageView imageView, int resource) {
-        imageView.setImageResource(resource);
     }
 
     public boolean play(int x, int y) {
