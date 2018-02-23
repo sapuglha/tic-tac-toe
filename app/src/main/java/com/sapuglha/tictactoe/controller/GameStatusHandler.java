@@ -7,22 +7,24 @@ import android.widget.ImageView;
 
 import com.sapuglha.tictactoe.BR;
 import com.sapuglha.tictactoe.R;
-import com.sapuglha.tictactoe.model.GameStatus;
+import com.sapuglha.tictactoe.model.Board;
 import com.sapuglha.tictactoe.model.PlayerType;
 
 import javax.inject.Inject;
 
-import static com.sapuglha.tictactoe.model.GameStatus.MATRIX_SIZE;
+import static com.sapuglha.tictactoe.model.Board.MATRIX_SIZE;
 
 public class GameStatusHandler extends BaseObservable {
-    private final GameStatus game;
+    private final Board game;
 
     private PlayerType winner;
+    private PlayerType currentPlayer;
 
     @Inject
-    public GameStatusHandler(GameStatus game) {
+    public GameStatusHandler(Board game) {
         this.game = game;
         this.winner = null;
+        this.currentPlayer = PlayerType.X;
     }
 
     @BindingAdapter("image")
@@ -33,6 +35,8 @@ public class GameStatusHandler extends BaseObservable {
     public void reset() {
         game.reset();
         winner = null;
+        currentPlayer = PlayerType.X;
+
         notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner);
         notifyPropertyChanged(BR._all);
     }
@@ -44,7 +48,7 @@ public class GameStatusHandler extends BaseObservable {
     }
 
     public int getPlayerResource(int x, int y) {
-        PlayerType position = game.getStatus(x, y);
+        PlayerType position = game.getPosition(x, y);
         if (null == position) return 0;
         switch (position) {
             case X:
@@ -56,10 +60,17 @@ public class GameStatusHandler extends BaseObservable {
         }
     }
 
-    public boolean play(int x, int y) {
-        PlayerType player = game.getCurrentPlayer();
+    private void setNextPlayer() {
+        if (currentPlayer == PlayerType.X) {
+            currentPlayer = PlayerType.O;
+        } else {
+            currentPlayer = PlayerType.X;
+        }
+    }
 
-        boolean result = (game.setStatus(x, y) && checkForWinner(x, y, player));
+    public boolean play(int x, int y) {
+        boolean result = (game.setPosition(x, y, currentPlayer) && checkForWinner(x, y, currentPlayer));
+        setNextPlayer();
         if (result) {
             notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner);
         }
@@ -72,7 +83,7 @@ public class GameStatusHandler extends BaseObservable {
 
         // Validate row, iterate columns:
         for (int j = 0; j < MATRIX_SIZE; j++) {
-            if (game.getStatus(x, j) == player) {
+            if (game.getPosition(x, j) == player) {
                 winnerCount++;
             } else {
                 break;
@@ -87,7 +98,7 @@ public class GameStatusHandler extends BaseObservable {
         // Validate column, iterate rows:
         winnerCount = 0;
         for (int i = 0; i < MATRIX_SIZE; i++) {
-            if (game.getStatus(i, y) == player) {
+            if (game.getPosition(i, y) == player) {
                 winnerCount++;
             } else {
                 break;
@@ -103,7 +114,7 @@ public class GameStatusHandler extends BaseObservable {
         winnerCount = 0;
         if (x == y) {
             for (int i = 0; i < MATRIX_SIZE; i++) {
-                if (game.getStatus(i, i) == player) {
+                if (game.getPosition(i, i) == player) {
                     winnerCount++;
                 } else {
                     break;
@@ -120,7 +131,7 @@ public class GameStatusHandler extends BaseObservable {
         winnerCount = 0;
         int j = 0;
         for (int i = MATRIX_SIZE - 1; i >= 0; i--) {
-            if (game.getStatus(i, j) == player) {
+            if (game.getPosition(i, j) == player) {
                 winnerCount++;
                 j++;
             } else {

@@ -2,47 +2,32 @@ package com.sapuglha.tictactoe.model;
 
 import android.support.annotation.VisibleForTesting;
 
-public class GameStatus {
+public class Board {
     public static final short MATRIX_SIZE = 3;
-    private PlayerType[][] status;
-    private PlayerType currentPlayer;
+    private PlayerType[][] board;
 
-    public GameStatus() {
+    public Board() {
         reset();
     }
 
-    public PlayerType getCurrentPlayer() {
-        return currentPlayer;
+    public PlayerType getPosition(int x, int y) {
+        return board[x][y];
     }
 
-    public PlayerType getStatus(int x, int y) {
-        return status[x][y];
-    }
-
-    public boolean setStatus(int x, int y) {
+    public boolean setPosition(int x, int y, PlayerType currentPlayer) {
         // Check that the given location is not already played, or played by the same user
-        if (status[x][y] != null
-                || status[x][y] == currentPlayer) {
+        if (board[x][y] != null || board[x][y] == currentPlayer) {
             return false;
         }
 
         // assign the player to that position
-        status[x][y] = currentPlayer;
-
-        // Set the next player
-        if (currentPlayer == PlayerType.X) {
-            currentPlayer = PlayerType.O;
-        } else {
-            currentPlayer = PlayerType.X;
-        }
+        board[x][y] = currentPlayer;
 
         return true;
     }
 
     public void reset() {
-        status = new PlayerType[MATRIX_SIZE][MATRIX_SIZE];
-
-        currentPlayer = PlayerType.X;
+        board = new PlayerType[MATRIX_SIZE][MATRIX_SIZE];
     }
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
@@ -50,8 +35,8 @@ public class GameStatus {
         StringBuilder matrix = new StringBuilder();
         for (int i = 0; i < MATRIX_SIZE; i++) {
             for (int j = 0; j < MATRIX_SIZE; j++) {
-                if (null != status[i][j]) {
-                    matrix.append(status[i][j].toString());
+                if (null != board[i][j]) {
+                    matrix.append(board[i][j].toString());
                 } else {
                     matrix.append("-");
                 }

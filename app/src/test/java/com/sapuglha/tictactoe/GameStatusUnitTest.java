@@ -1,7 +1,7 @@
 package com.sapuglha.tictactoe;
 
 import com.sapuglha.tictactoe.controller.GameStatusHandler;
-import com.sapuglha.tictactoe.model.GameStatus;
+import com.sapuglha.tictactoe.model.Board;
 
 import org.junit.Test;
 
@@ -22,8 +22,8 @@ public class GameStatusUnitTest {
      */
     @Test
     public void row0_hasWinner() {
-        GameStatus gameStatus = new GameStatus();
-        GameStatusHandler game = new GameStatusHandler(gameStatus);
+        Board board = new Board();
+        GameStatusHandler game = new GameStatusHandler(board);
 
         assertFalse(game.play(0, 0)); // X
 
@@ -35,7 +35,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(0, 2)); // X
 
-        System.out.println(gameStatus.getMatrix());
+        System.out.println(board.getMatrix());
     }
 
     /**
@@ -48,8 +48,8 @@ public class GameStatusUnitTest {
      */
     @Test
     public void column0_hasWinner() {
-        GameStatus gameStatus = new GameStatus();
-        GameStatusHandler game = new GameStatusHandler(gameStatus);
+        Board board = new Board();
+        GameStatusHandler game = new GameStatusHandler(board);
 
         assertFalse(game.play(0, 0)); // X
 
@@ -61,7 +61,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(2, 0)); // X
 
-        System.out.println(gameStatus.getMatrix());
+        System.out.println(board.getMatrix());
     }
 
     /**
@@ -74,8 +74,8 @@ public class GameStatusUnitTest {
      */
     @Test
     public void column1_hasWinner() {
-        GameStatus gameStatus = new GameStatus();
-        GameStatusHandler game = new GameStatusHandler(gameStatus);
+        Board board = new Board();
+        GameStatusHandler game = new GameStatusHandler(board);
 
         assertFalse(game.play(0, 1)); // X
 
@@ -87,7 +87,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(2, 1)); // X
 
-        System.out.println(gameStatus.getMatrix());
+        System.out.println(board.getMatrix());
     }
 
     /**
@@ -100,8 +100,8 @@ public class GameStatusUnitTest {
      */
     @Test
     public void diagonal00_hasWinner() {
-        GameStatus gameStatus = new GameStatus();
-        GameStatusHandler game = new GameStatusHandler(gameStatus);
+        Board board = new Board();
+        GameStatusHandler game = new GameStatusHandler(board);
 
         assertFalse(game.play(0, 0)); // X
 
@@ -113,7 +113,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(2, 2)); // X
 
-        System.out.println(gameStatus.getMatrix());
+        System.out.println(board.getMatrix());
     }
 
     /**
@@ -126,8 +126,8 @@ public class GameStatusUnitTest {
      */
     @Test
     public void diagonal02_hasWinner() {
-        GameStatus gameStatus = new GameStatus();
-        GameStatusHandler game = new GameStatusHandler(gameStatus);
+        Board board = new Board();
+        GameStatusHandler game = new GameStatusHandler(board);
 
         assertFalse(game.play(0, 2)); // X
 
@@ -139,7 +139,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(2, 0)); // X
 
-        System.out.println(gameStatus.getMatrix());
+        System.out.println(board.getMatrix());
     }
 
 
@@ -153,8 +153,8 @@ public class GameStatusUnitTest {
      */
     @Test
     public void bigGame_hasWinner() {
-        GameStatus gameStatus = new GameStatus();
-        GameStatusHandler game = new GameStatusHandler(gameStatus);
+        Board board = new Board();
+        GameStatusHandler game = new GameStatusHandler(board);
 
         assertFalse(game.play(0, 0)); // X
 
@@ -170,7 +170,7 @@ public class GameStatusUnitTest {
 
         assertTrue(game.play(0, 1)); // X
 
-        System.out.println(gameStatus.getMatrix());
+        System.out.println(board.getMatrix());
     }
 
     /**
@@ -183,13 +183,13 @@ public class GameStatusUnitTest {
      */
     @Test
     public void stateCheck_samePosition() {
-        GameStatus gameStatus = new GameStatus();
-        GameStatusHandler game = new GameStatusHandler(gameStatus);
+        Board board = new Board();
+        GameStatusHandler game = new GameStatusHandler(board);
 
         assertFalse(game.play(0, 2)); // X
 
         assertFalse(game.play(0, 2)); // O
 
-        System.out.println(gameStatus.getMatrix());
+        System.out.println(board.getMatrix());
     }
 }
