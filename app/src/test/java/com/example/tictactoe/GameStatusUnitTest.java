@@ -21,7 +21,7 @@ public class GameStatusUnitTest {
      * @throws Exception
      */
     @Test
-    public void row0_hasWinner() throws Exception {
+    public void row0_hasWinner() {
         GameStatus gameStatus = new GameStatus();
         GameStatusHandler game = new GameStatusHandler(gameStatus);
 
@@ -47,7 +47,7 @@ public class GameStatusUnitTest {
      * @throws Exception
      */
     @Test
-    public void column0_hasWinner() throws Exception {
+    public void column0_hasWinner() {
         GameStatus gameStatus = new GameStatus();
         GameStatusHandler game = new GameStatusHandler(gameStatus);
 
@@ -73,7 +73,7 @@ public class GameStatusUnitTest {
      * @throws Exception
      */
     @Test
-    public void column1_hasWinner() throws Exception {
+    public void column1_hasWinner() {
         GameStatus gameStatus = new GameStatus();
         GameStatusHandler game = new GameStatusHandler(gameStatus);
 
@@ -99,7 +99,7 @@ public class GameStatusUnitTest {
      * @throws Exception
      */
     @Test
-    public void diagonal00_hasWinner() throws Exception {
+    public void diagonal00_hasWinner() {
         GameStatus gameStatus = new GameStatus();
         GameStatusHandler game = new GameStatusHandler(gameStatus);
 
@@ -125,7 +125,7 @@ public class GameStatusUnitTest {
      * @throws Exception
      */
     @Test
-    public void diagonal02_hasWinner() throws Exception {
+    public void diagonal02_hasWinner() {
         GameStatus gameStatus = new GameStatus();
         GameStatusHandler game = new GameStatusHandler(gameStatus);
 
@@ -152,7 +152,7 @@ public class GameStatusUnitTest {
      * @throws Exception
      */
     @Test
-    public void bigGame_hasWinner() throws Exception {
+    public void bigGame_hasWinner() {
         GameStatus gameStatus = new GameStatus();
         GameStatusHandler game = new GameStatusHandler(gameStatus);
 
@@ -182,7 +182,7 @@ public class GameStatusUnitTest {
      * @throws Exception
      */
     @Test
-    public void stateCheck_samePosition() throws Exception {
+    public void stateCheck_samePosition() {
         GameStatus gameStatus = new GameStatus();
         GameStatusHandler game = new GameStatusHandler(gameStatus);
 
