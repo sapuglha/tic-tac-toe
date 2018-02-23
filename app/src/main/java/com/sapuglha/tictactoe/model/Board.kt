@@ -15,6 +15,10 @@ class Board {
         reset()
     }
 
+    fun reset() {
+        board = Array(MATRIX_SIZE) { Array<PlayerType?>(MATRIX_SIZE) { null } }
+    }
+
     fun getPosition(x: Int, y: Int): PlayerType? {
         return board[x][y]
     }
@@ -29,10 +33,6 @@ class Board {
         board[x][y] = currentPlayer
 
         return true
-    }
-
-    fun reset() {
-        board = Array(MATRIX_SIZE) { Array<PlayerType?>(MATRIX_SIZE) { null } }
     }
 
     companion object {
