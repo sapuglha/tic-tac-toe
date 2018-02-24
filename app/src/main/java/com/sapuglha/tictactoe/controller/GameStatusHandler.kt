@@ -18,16 +18,27 @@ class GameStatusHandler @Inject constructor(
     private var winner: PlayerType? = null
     private var currentPlayer: PlayerType = PlayerType.X
 
+    /**
+     * Main game flow
+     *
+     * returns: true if there was a winner after the last play
+     */
     fun play(x: Int, y: Int): Boolean {
+        // If we already have a winner prevent new plays
         if (winner != null) return false
 
-        val result = game.setPosition(x, y, currentPlayer) && checkForWinner(x, y, currentPlayer)
-        setNextPlayer()
-        if (result) {
-            notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner)
-        }
+        // reject invalid plays
+        if (!game.setPosition(x, y, currentPlayer)) return false
+
+        // dispatch a board update
         notifyPropertyChanged(BR._all)
-        return result
+
+        val response = checkForWinner(x, y, currentPlayer)
+
+        // otherwise, prepare for next move
+        setNextPlayer()
+
+        return response
     }
 
     fun reset() {
@@ -46,6 +57,7 @@ class GameStatusHandler @Inject constructor(
 
     fun getPlayerResource(x: Int, y: Int): Int {
         val position = game.getPosition(x, y) ?: return 0
+
         return when (position) {
             PlayerType.X -> R.drawable.player_x
             PlayerType.O -> R.drawable.player_o
