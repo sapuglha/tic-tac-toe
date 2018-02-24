@@ -18,8 +18,8 @@ class GameStatusUnitTest {
         val matrix = StringBuilder()
         for (i in 0 until Board.MATRIX_SIZE) {
             for (j in 0 until Board.MATRIX_SIZE) {
-                if (null != board!![i][j]) {
-                    matrix.append(board!![i][j].toString())
+                if (null != board[i][j]) {
+                    matrix.append(board[i][j].toString())
                 } else {
                     matrix.append("-")
                 }
