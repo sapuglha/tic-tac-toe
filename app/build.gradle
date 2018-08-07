@@ -28,10 +28,10 @@ android {
 }
 
 ext {
-    android_support_version = "27.0.2"
-    architecture_components_lifecycle_version = '1.1.0'
+    android_support_version = "27.1.1"
+    architecture_components_lifecycle_version = '1.1.1'
     anko_version = "0.+"
-    dagger_version = "2.14.1"
+    dagger_version = "2.16"
 }
 
 dependencies {
@@ -68,7 +68,4 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
-}
-repositories {
-    mavenCentral()
 }
