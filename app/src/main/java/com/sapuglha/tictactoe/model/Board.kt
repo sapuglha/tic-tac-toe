@@ -1,6 +1,6 @@
 package com.sapuglha.tictactoe.model
 
-import android.support.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting
 
 class Board {
     private lateinit var board: Array<Array<PlayerType?>>

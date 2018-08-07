@@ -1,7 +1,7 @@
 package com.sapuglha.tictactoe.controller
 
-import android.databinding.BaseObservable
-import android.databinding.Bindable
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
 import com.sapuglha.tictactoe.BR
 import com.sapuglha.tictactoe.model.Board
 import com.sapuglha.tictactoe.model.Board.Companion.MATRIX_SIZE

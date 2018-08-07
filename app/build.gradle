@@ -12,7 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -28,8 +28,8 @@ android {
 }
 
 ext {
-    android_support_version = "28.0.0-beta01"
-    architecture_components_lifecycle_version = '1.1.1'
+    android_support_version = '1.0.0-beta01'
+    architecture_components_lifecycle_version = '2.0.0-beta01'
     anko_version = "0.+"
     dagger_version = "2.16"
 }
@@ -47,19 +47,19 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$anko_version"
 
     // Android support libs
-    implementation "com.android.support:appcompat-v7:$android_support_version"
-    implementation "com.android.support:gridlayout-v7:$android_support_version"
+    implementation "androidx.appcompat:appcompat:$android_support_version"
+    implementation "androidx.gridlayout:gridlayout:$android_support_version"
 
     // Architecture components - somehow databinding required this version
-    implementation "android.arch.lifecycle:runtime:$architecture_components_lifecycle_version"
-    implementation "android.arch.lifecycle:extensions:$architecture_components_lifecycle_version"
-    kapt "android.arch.lifecycle:compiler:$architecture_components_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$architecture_components_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$architecture_components_lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$architecture_components_lifecycle_version"
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
     // Testing libs
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha3', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
