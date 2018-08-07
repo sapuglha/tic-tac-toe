@@ -2,10 +2,7 @@ package com.sapuglha.tictactoe.controller
 
 import android.databinding.BaseObservable
 import android.databinding.Bindable
-import android.databinding.BindingAdapter
-import android.widget.ImageView
 import com.sapuglha.tictactoe.BR
-import com.sapuglha.tictactoe.R
 import com.sapuglha.tictactoe.model.Board
 import com.sapuglha.tictactoe.model.Board.Companion.MATRIX_SIZE
 import com.sapuglha.tictactoe.model.PlayerType
@@ -55,13 +52,8 @@ class GameStatusHandler @Inject constructor(
         return if (null != winner) winner!!.toString() else ""
     }
 
-    fun getPlayerResource(x: Int, y: Int): Int {
-        val position = game.getPosition(x, y) ?: return 0
-
-        return when (position) {
-            PlayerType.X -> R.drawable.player_x
-            PlayerType.O -> R.drawable.player_o
-        }
+    fun getPlayerResource(x: Int, y: Int): PlayerType? {
+        return game.getPosition(x, y)
     }
 
     private fun setNextPlayer() {
@@ -138,14 +130,6 @@ class GameStatusHandler @Inject constructor(
             true
         } else {
             false
-        }
-    }
-
-    companion object {
-        @JvmStatic
-        @BindingAdapter("image")
-        fun imageBinding(imageView: ImageView, resource: Int) {
-            imageView.setImageResource(resource)
         }
     }
 }
