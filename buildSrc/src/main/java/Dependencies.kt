@@ -47,11 +47,5 @@ object Libraries {
     val androidx_test_rules = "androidx.test:rules:${versions.androidx.test.others}"
     val androidx_test_runner = "androidx.test:runner:${versions.androidx.test.others}"
 
-    val androidx_lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:${versions.androidx.lifecycle}"
-    val androidx_lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime:${versions.androidx.lifecycle}"
-    val androidx_lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:${versions.androidx.lifecycle}"
-
     val junit = "junit:junit:${versions.junit}"
-
-    val picasso = "com.squareup.picasso:picasso:${versions.picasso}"
 }

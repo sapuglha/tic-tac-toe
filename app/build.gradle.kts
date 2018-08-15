@@ -48,13 +48,6 @@ dependencies {
     implementation(Libraries.androidx_constraintLayout)
     implementation(Libraries.androidx_constraintLayout_solver)
 
-    // Architecture components
-    implementation(Libraries.androidx_lifecycle_runtime)
-    implementation(Libraries.androidx_lifecycle_extensions)
-    kapt(Libraries.androidx_lifecycle_compiler)
-
-    implementation(Libraries.picasso)
-
     // Dagger
     implementation(Libraries.dagger)
     implementation(Libraries.dagger_android)
