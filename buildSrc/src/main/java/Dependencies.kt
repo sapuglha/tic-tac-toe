@@ -2,10 +2,17 @@ object versions {
     const val kotlin = "1.2.60"
 
     object androidx {
-        const val appcompat = "1.0.0-rc01"
+        const val bundleVersion = "-rc01"
+        const val appcompat = "1.0.0${bundleVersion}"
         const val constraintLayout = "1.1.2"
-        const val gridlayout = "1.0.0-rc01"
-        const val lifecycle = "2.0.0-rc01"
+        const val gridlayout = "1.0.0${bundleVersion}"
+        const val lifecycle = "2.0.0${bundleVersion}"
+
+        object test {
+            const val bundleVersion = "-alpha4"
+            const val espresso = "3.1.0${bundleVersion}"
+            const val others = "1.1.0${bundleVersion}"
+        }
     }
 
     const val anko = "0.+"
@@ -36,9 +43,9 @@ object Libraries {
     val androidx_constraintLayout = "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
     val androidx_constraintLayout_solver = "androidx.constraintlayout:constraintlayout-solver:${versions.androidx.constraintLayout}"
 
-    val androidx_test_espresso = "androidx.test.espresso:espresso-core:3.1.0-alpha4"
-    val androidx_test_rules = "androidx.test:rules:1.1.0-alpha4"
-    val androidx_test_runner = "androidx.test:runner:1.1.0-alpha4"
+    val androidx_test_espresso = "androidx.test.espresso:espresso-core:${versions.androidx.test.espresso}"
+    val androidx_test_rules = "androidx.test:rules:${versions.androidx.test.others}"
+    val androidx_test_runner = "androidx.test:runner:${versions.androidx.test.others}"
 
     val androidx_lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:${versions.androidx.lifecycle}"
     val androidx_lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime:${versions.androidx.lifecycle}"
