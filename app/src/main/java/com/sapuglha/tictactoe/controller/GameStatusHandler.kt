@@ -43,8 +43,7 @@ class GameStatusHandler @Inject constructor(
         winner = null
         currentPlayer = PlayerType.X
 
-        notifyPropertyChanged(com.sapuglha.tictactoe.BR.winner)
-        notifyPropertyChanged(BR._all)
+        notifyPropertyChanged(com.sapuglha.tictactoe.BR._all)
     }
 
     @Bindable

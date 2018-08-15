@@ -10,5 +10,6 @@ fun imageBinding(imageView: ImageView, player: PlayerType?) {
     when (player) {
         PlayerType.X -> imageView.setImageResource(R.drawable.player_x)
         PlayerType.O -> imageView.setImageResource(R.drawable.player_o)
+        else -> imageView.setImageDrawable(null)
     }
 }

@@ -9,6 +9,7 @@ plugins {
 
 android {
     compileSdkVersion(28)
+
     defaultConfig {
         applicationId = "com.sapuglha.tictactoe"
         minSdkVersion(21)
@@ -17,6 +18,7 @@ android {
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
