@@ -1,7 +1,7 @@
 package com.sapuglha.tictactoe.ui
 
-import androidx.databinding.BindingAdapter
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import com.sapuglha.tictactoe.R
 import com.sapuglha.tictactoe.model.PlayerType
 
