@@ -64,8 +64,9 @@ dependencies {
 
     // Testing libs
     testImplementation(Libraries.junit)
-    androidTestImplementation(Libraries.androidx_espresso)
-//    , {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    })
+    androidTestImplementation(Libraries.androidx_test_runner)
+    androidTestImplementation(Libraries.androidx_test_rules)
+    androidTestImplementation(Libraries.androidx_test_espresso) {
+        exclude(group = "com.android.support", module = "support-annotations")
+    }
 }

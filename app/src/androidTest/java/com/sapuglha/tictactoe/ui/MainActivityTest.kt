@@ -7,7 +7,6 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
-import android.test.suitebuilder.annotation.LargeTest
 import com.sapuglha.tictactoe.R
 import org.hamcrest.Matchers.allOf
 import org.junit.Rule

@@ -36,7 +36,9 @@ object Libraries {
     val androidx_constraintLayout = "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
     val androidx_constraintLayout_solver = "androidx.constraintlayout:constraintlayout-solver:${versions.androidx.constraintLayout}"
 
-    val androidx_espresso = "androidx.test.espresso:espresso-core:3.1.0-alpha3"
+    val androidx_test_espresso = "androidx.test.espresso:espresso-core:3.1.0-alpha4"
+    val androidx_test_rules = "androidx.test:rules:1.1.0-alpha4"
+    val androidx_test_runner = "androidx.test:runner:1.1.0-alpha4"
 
     val androidx_lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:${versions.androidx.lifecycle}"
     val androidx_lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime:${versions.androidx.lifecycle}"
