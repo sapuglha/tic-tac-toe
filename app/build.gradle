@@ -90,6 +90,7 @@ android {
             buildConfigField "String", "API_VERSION", "\"dev\""
 
             firebaseAppDistribution {
+                apkPath = "/app/build/outputs/apk/dev/release/app-dev-release.apk"
                 serviceCredentialsFile = "keystores/serviceAccountFirebase.json"
                 groups = "internal"
             }
