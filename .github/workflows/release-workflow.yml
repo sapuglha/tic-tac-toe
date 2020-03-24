@@ -1,0 +1,40 @@
+name: Master Push Workflow
+
+# Execute Develop Workflow on push to develop
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  ##########################################################
+  # Assemble Job:
+  # Install dependencies and assemble debug and test APKs
+  ##########################################################
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: git fetch --depth=1 origin
+
+      - name: Service account file
+        env:
+          FILE_ENCRYPTION_PASSWORD: ${{ secrets.FILE_ENCRYPTION_PASSWORD }}
+        run: gpg --quiet --batch --yes --decrypt --passphrase=$FILE_ENCRYPTION_PASSWORD --output ./keystores/serviceAccountPlayStore.json ./keystores/serviceAccountPlayStore.gpg
+
+      - name: Prod Release
+        env:
+          PROD_KEYSTORE_PASSWORD: ${{ secrets.PROD_KEYSTORE_PASSWORD }}
+        run: ./gradlew clean publishProdReleaseBundle
+
+      - name: Remove service account files
+        run: rm keystores/*.json
+
+      - name: Archive Release Artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: Release AAB
+          path: ./app/build/outputs
