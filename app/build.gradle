@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
 apply from: '../dependencies-unit-test.gradle'
 apply from: '../dependencies-android-test.gradle'
 
@@ -43,6 +46,15 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+
+            // Debug builds will use this keystore, release builds will use the key from each flavor
+            signingConfig signingConfigs.debug
+
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
 
         release {
@@ -115,4 +127,9 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$versions.dagger"
     kapt "com.google.dagger:dagger-android-processor:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+
+    implementation "com.jakewharton.timber:timber:$versions.timber"
+
+    implementation "com.google.firebase:firebase-analytics:$versions.firebase.analytics"
+    implementation "com.google.firebase:firebase-crashlytics:$versions.firebase.crashlytics"
 }

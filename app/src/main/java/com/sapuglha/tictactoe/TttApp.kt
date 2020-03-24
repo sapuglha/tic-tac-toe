@@ -2,9 +2,12 @@ package com.sapuglha.tictactoe
 
 import android.app.Application
 import android.os.StrictMode
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.sapuglha.tictactoe.di.DaggerAppComponent
+import com.sapuglha.tictactoe.error.CrashlyticsReportingTree
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -16,6 +19,8 @@ class TttApp : Application(), HasAndroidInjector {
     override fun onCreate() {
         super.onCreate()
 
+        setupLogging()
+
         DaggerAppComponent
             .builder()
             .application(this)
@@ -23,6 +28,13 @@ class TttApp : Application(), HasAndroidInjector {
             .inject(this);
 
         initialize()
+    }
+
+    private fun setupLogging() {
+        Timber.plant(if (BuildConfig.DEBUG) Timber.DebugTree() else CrashlyticsReportingTree())
+
+        // Disable Crashlytics for debug builds
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
     }
 
     private fun initialize() {
