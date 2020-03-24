@@ -47,7 +47,7 @@ jobs:
       - name: Dev Release
         env:
           DEV_KEYSTORE_PASSWORD: ${{ secrets.DEV_KEYSTORE_PASSWORD }}
-        run: ./gradlew clean appDistributionUploadDevRelease
+        run: ./gradlew clean appDistributionUploadDevRelease --stacktrace
 
       - name: Remove service account files
         run: rm keystores/*.json
