@@ -42,3 +42,4 @@ captures/
 *assets/
 true/
 .gradletasknamecache
+/keystores/*.json
