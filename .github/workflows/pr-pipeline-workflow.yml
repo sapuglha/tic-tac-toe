@@ -1,0 +1,42 @@
+name: PR Pipeline Workflow
+
+# Execute PR Pipeline Workflow on pull requests to develop and master
+on:
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  ##########################################################
+  # Lint Job:
+  # Install dependencies and execute lint debug
+  ##########################################################
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: git fetch --depth=1 origin
+
+      - name: Run lint checks
+        run: ./gradlew lintDevDebug
+
+  ##########################################################
+  # Unit Test Job:
+  # Install dependencies and execute unit tests
+  ##########################################################
+  unit_test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: git fetch --depth=1 origin
+
+      - name: Run Unit Tests
+        run: ./gradlew app:testDevDebugUnitTest
