@@ -11,7 +11,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class TttApp : Application(), HasAndroidInjector {
+class App : Application(), HasAndroidInjector {
     @Inject
     internal lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
     override fun androidInjector() = dispatchingAndroidInjector

@@ -1,7 +1,7 @@
 package com.sapuglha.tictactoe.di
 
 import android.app.Application
-import com.sapuglha.tictactoe.TttApp
+import com.sapuglha.tictactoe.App
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -21,5 +21,5 @@ interface AppComponent {
         fun build(): AppComponent
     }
 
-    fun inject(app: TttApp)
+    fun inject(app: App)
 }
