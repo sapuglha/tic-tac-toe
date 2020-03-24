@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        google()
+    }
+    dependencies {
+        classpath "com.google.firebase:firebase-appdistribution-gradle:$versions.firebase.appdistribution"
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -5,6 +14,7 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.appdistribution'
 
 apply from: '../dependencies-unit-test.gradle'
 apply from: '../dependencies-android-test.gradle'
@@ -78,6 +88,11 @@ android {
             signingConfig signingConfigs.dev
 
             buildConfigField "String", "API_VERSION", "\"dev\""
+
+            firebaseAppDistribution {
+                serviceCredentialsFile = "keystores/serviceAccountFirebase.json"
+                groups = "internal"
+            }
         }
 
         // Build that combined with release type will be pushed to the store
