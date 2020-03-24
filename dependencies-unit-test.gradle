@@ -1,0 +1,30 @@
+apply from: '../dependencies.gradle'
+
+dependencies {
+    testImplementation "junit:junit:$versions.junit"
+
+    testImplementation "androidx.arch.core:core-testing:$versions.androidx.arch"
+
+    testImplementation "androidx.test:core-ktx:$versions.androidx.test.core"
+    testImplementation "androidx.test:runner:$versions.androidx.test.runner"
+    testImplementation "androidx.test:rules:$versions.androidx.test.rules"
+
+    testImplementation "androidx.test.ext:junit-ktx:$versions.androidx.test.junit"
+
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.kotlinCoroutines"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinCoroutines"
+    testImplementation "org.mockito:mockito-core:$versions.mockito"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockito_kotlin"
+
+    testImplementation "com.google.truth:truth:$versions.androidx.test.google_truth"
+
+    testImplementation("org.threeten:threetenbp:$versions.threeTenAbp") {
+        exclude group: 'com.jakewharton.threetenabp', module: 'threetenabp'
+    }
+
+    // Testing - Dagger
+    testImplementation "com.google.dagger:dagger:$versions.dagger"
+    kaptTest "com.google.dagger:dagger-compiler:$versions.dagger"
+    kaptTest "com.google.dagger:dagger-android-processor:$versions.dagger"
+}

@@ -1,0 +1,32 @@
+apply from: '../dependencies.gradle'
+
+dependencies {
+    androidTestImplementation "androidx.arch.core:core-testing:$versions.androidx.arch"
+
+    androidTestImplementation "androidx.test:core:$versions.androidx.test.core"
+    androidTestImplementation "androidx.test:runner:$versions.androidx.test.runner"
+    androidTestImplementation "androidx.test:rules:$versions.androidx.test.rules"
+
+    // Assertions
+    androidTestImplementation "androidx.test.ext:junit:$versions.androidx.test.junit"
+    androidTestImplementation "androidx.test.ext:truth:$versions.androidx.test.androidx_truth"
+    androidTestImplementation "com.google.truth:truth:$versions.androidx.test.google_truth"
+    
+    // Espresso dependencies
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.test.espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$versions.androidx.test.espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$versions.androidx.test.espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$versions.androidx.test.espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:$versions.androidx.test.espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-web:$versions.androidx.test.espresso"
+    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$versions.androidx.test.espresso"
+
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+    androidTestImplementation "org.mockito:mockito-core:$versions.mockito"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockito_kotlin"
+
+    // Android Testing - Dagger
+    androidTestImplementation "com.google.dagger:dagger:$versions.dagger"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$versions.dagger"
+    kaptAndroidTest "com.google.dagger:dagger-android-processor:$versions.dagger"
+}
