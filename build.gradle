@@ -25,10 +25,10 @@ plugins {
 apply from: 'dependencies.gradle'
 
 androidGitVersion {
-    hideBranches = ['master','develop']
+    hideBranches = ['master']
     tagPattern '[0-9]+.*'
-    format '%tag%%-branch%%-dirty%'
-    codeFormat 'MNNPP'
+    format '%tag%%-count%%<commit>%%-branch%%-dirty%'
+    codeFormat 'MNNPPBBB'
 }
 
 allprojects {
